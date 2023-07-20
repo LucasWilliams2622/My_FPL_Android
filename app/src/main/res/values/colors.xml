@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="background">#FFFFFF</color>
-    <color name="primary">#f26f25</color>
-    <color name="secondary">#36A539</color>
+    <color name="background2">#FFAC7D</color>
+    <color name="background3">#FBEAC8</color>
+    <color name="background4">#D9D9D9</color>
     <color name="bg_button">#E07900</color>
-    <color name="title_1">#333333</color>
-    <color name="title_2">#f26f25</color>
-    <color name="text">#333333</color>
+
+    <color name="primary">#F26F25</color>
+    <color name="secondary">#36A539</color>
+
+    <color name="title">#F26F25</color>
+    <color name="title2">#FFFFFF</color>
+    <color name="title3">#26282A</color>
+    <color name="text">#26282A</color>
+
+    <color name="border_left">#F26F25</color>
+    <color name="border_left2">#FBEAC8</color>
+    <color name="border_left3">#B1D9CD</color>
+    <color name="border_left4">#93C2C6</color>
 
 
     <color name="purple_200">#FFBB86FC</color>

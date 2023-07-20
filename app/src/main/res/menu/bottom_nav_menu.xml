@@ -4,17 +4,17 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="Trang chủ" />
     <item
         android:id="@+id/schedule"
         android:icon="@drawable/ic_calendar"
-        android:title="Schedule" />
+        android:title="Lịch" />
     <item
         android:id="@+id/news"
         android:icon="@drawable/ic_notification"
-        android:title="News" />
+        android:title="Thông báo" />
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_user"
-        android:title="Profile" />
+        android:title="Hồ sơ" />
 </menu>
