@@ -326,7 +326,6 @@
                         android:layout_height="wrap_content"
                         android:text="Ca 6 · 19:30 - 21:30"
                         android:textColor="@color/title3"
-
                         android:textSize="10dp"
                         android:textStyle="normal" />
                 </LinearLayout>
