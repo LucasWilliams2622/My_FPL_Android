@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import com.example.myfplapplication.MainActivity;
 import com.example.myfplapplication.R;
 
 public class LoginActivity extends AppCompatActivity {

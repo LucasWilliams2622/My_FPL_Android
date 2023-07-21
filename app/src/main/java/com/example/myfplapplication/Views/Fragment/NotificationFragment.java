@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -136,6 +137,25 @@ public class NotificationFragment extends Fragment {
 
         // Create an adapter to populate the list with notification groups
         NotificationAdapter notificationAdapter = new NotificationAdapter(notificationGroups);
+        notificationAdapter.setOnItemClickListener(new NotificationAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Notification notification) {
+                // Create a new instance of NotificationDetailFragment
+                NotificationDetailFragment fragment = new NotificationDetailFragment();
+
+                // Pass data to the new fragment using its arguments
+                Bundle args = new Bundle();
+                args.putParcelable("notification", notification);
+                fragment.setArguments(args);
+
+                // Use the FragmentManager to perform a fragment transaction and switch to the new fragment
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         // Set the layout manager of the RecyclerView
         notificationRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

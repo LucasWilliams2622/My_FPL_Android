@@ -1,4 +1,4 @@
-package com.example.myfplapplication;
+package com.example.myfplapplication.Views.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+import com.example.myfplapplication.R;
 import com.example.myfplapplication.Views.Fragment.HomeFragment;
 import com.example.myfplapplication.Views.Fragment.NotificationFragment;
 import com.example.myfplapplication.Views.Fragment.ProfileFragment;
