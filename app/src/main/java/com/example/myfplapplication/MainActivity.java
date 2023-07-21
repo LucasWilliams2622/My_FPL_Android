@@ -7,10 +7,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
-import com.example.myfplapplication.Views.HomeFragment;
-import com.example.myfplapplication.Views.NotificationFragment;
-import com.example.myfplapplication.Views.ProfileFragment;
-import com.example.myfplapplication.Views.ScheduleFragment;
+import com.example.myfplapplication.Views.Fragment.HomeFragment;
+import com.example.myfplapplication.Views.Fragment.NotificationFragment;
+import com.example.myfplapplication.Views.Fragment.ProfileFragment;
+import com.example.myfplapplication.Views.Fragment.ScheduleFragment;
 import com.example.myfplapplication.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {

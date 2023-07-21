@@ -1,13 +1,11 @@
-package com.example.myfplapplication.Views;
+package com.example.myfplapplication.Views.Fragment;
 
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +19,7 @@ import com.example.myfplapplication.Adapter.NotificationAdapter;
 import com.example.myfplapplication.Model.Notification;
 import com.example.myfplapplication.Model.NotificationGroup;
 import com.example.myfplapplication.R;
+import com.example.myfplapplication.Views.ViewHolder.TabViewHolder;
 
 import java.util.ArrayList;
 import java.util.Arrays;

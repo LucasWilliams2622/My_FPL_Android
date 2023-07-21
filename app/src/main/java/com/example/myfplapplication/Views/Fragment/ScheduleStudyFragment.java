@@ -1,4 +1,4 @@
-package com.example.myfplapplication.Views;
+package com.example.myfplapplication.Views.Fragment;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.example.myfplapplication.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ScheduleExamFragment#newInstance} factory method to
+ * Use the {@link ScheduleStudyFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ScheduleExamFragment extends Fragment {
+public class ScheduleStudyFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class ScheduleExamFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ScheduleExamFragment() {
+    public ScheduleStudyFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class ScheduleExamFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ScheduleExamFragment.
+     * @return A new instance of fragment ScheduleStudyFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ScheduleExamFragment newInstance(String param1, String param2) {
-        ScheduleExamFragment fragment = new ScheduleExamFragment();
+    public static ScheduleStudyFragment newInstance(String param1, String param2) {
+        ScheduleStudyFragment fragment = new ScheduleStudyFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class ScheduleExamFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_schedule_exam, container, false);
+        return inflater.inflate(R.layout.fragment_schedule_study, container, false);
     }
 }

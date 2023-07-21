@@ -1,4 +1,4 @@
-package com.example.myfplapplication.Views;
+package com.example.myfplapplication.Views.Fragment;
 
 import android.os.Bundle;
 

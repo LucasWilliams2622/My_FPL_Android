@@ -6,8 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.myfplapplication.Views.ScheduleExamFragment;
-import com.example.myfplapplication.Views.ScheduleStudyFragment;
+import com.example.myfplapplication.Views.Fragment.ScheduleExamFragment;
+import com.example.myfplapplication.Views.Fragment.ScheduleStudyFragment;
 
 public class FragmentScheduleAdapter extends FragmentStateAdapter{
 

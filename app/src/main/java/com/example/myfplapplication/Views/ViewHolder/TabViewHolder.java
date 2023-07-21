@@ -1,4 +1,4 @@
-package com.example.myfplapplication.Views;
+package com.example.myfplapplication.Views.ViewHolder;
 
 import android.widget.TextView;
 
