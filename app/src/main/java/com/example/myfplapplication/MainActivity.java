@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.example.myfplapplication.Views.HomeFragment;
-import com.example.myfplapplication.Views.NewsFragment;
+import com.example.myfplapplication.Views.NotificationFragment;
 import com.example.myfplapplication.Views.ProfileFragment;
 import com.example.myfplapplication.Views.ScheduleFragment;
 import com.example.myfplapplication.databinding.ActivityMainBinding;
@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.schedule:
                     replaceFragment(new ScheduleFragment());
                     break;
-                case R.id.news:
-                    replaceFragment(new NewsFragment());
+                case R.id.notification:
+                    replaceFragment(new NotificationFragment());
                     break;
             }
             return true;
