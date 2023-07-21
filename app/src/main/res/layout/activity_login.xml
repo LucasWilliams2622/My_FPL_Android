@@ -68,7 +68,7 @@
                 />
 
             <EditText
-                android:id="@+id/msg_box"
+                android:id="@+id/email"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -121,7 +121,7 @@
                 />
 
             <EditText
-                android:id="@+id/passwordInput"
+                android:id="@+id/password"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -144,7 +144,7 @@
 
 
     <LinearLayout
-        android:id="@+id/login"
+        android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
