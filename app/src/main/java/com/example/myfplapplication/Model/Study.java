@@ -1,14 +1,15 @@
 package com.example.myfplapplication.Model;
 
 public class Study {
-    public  String mon_hoc_id, ten_mon_hoc, ca, dia_diem, ngay_hoc;
+    public  String mon_hoc_id, ten_mon_hoc, ca, dia_diem, ngay_hoc, viewColor;
 
-    public Study(String mon_hoc_id, String ten_mon_hoc, String ca, String dia_diem, String ngay_hoc) {
+    public Study(String mon_hoc_id, String ten_mon_hoc, String ca, String dia_diem, String ngay_hoc, int viewColor) {
         this.mon_hoc_id = mon_hoc_id;
         this.ten_mon_hoc = ten_mon_hoc;
         this.ca = ca;
         this.dia_diem = dia_diem;
         this.ngay_hoc = ngay_hoc;
+        this.viewColor = String.valueOf(viewColor);
     }
 
     public String getMon_hoc_id() {
@@ -49,5 +50,13 @@ public class Study {
 
     public void setNgay_hoc(String ngay_hoc) {
         this.ngay_hoc = ngay_hoc;
+    }
+
+    public String getViewColor() {
+        return viewColor;
+    }
+
+    public void setViewColor(String viewColor) {
+        this.viewColor = viewColor;
     }
 }

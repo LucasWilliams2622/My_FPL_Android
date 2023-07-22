@@ -1,5 +1,6 @@
 package com.example.myfplapplication.Views.Fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -39,15 +40,15 @@ public class ScheduleStudyFragment extends Fragment {
         // Create a list of notification groups
         List<StudyGroup> studyGroups = new ArrayList<>();
         studyGroups.add(new StudyGroup("2023-07-19", Arrays.asList(
-                new Study("MOB403", "Android Networking", "Ca 6", "T308 (Nhà T)", "19:30 - 21:30"),
-                new Study("MOB401", "Lập trình Mobile đa nền tảng", "Ca 2", "T1108 (Nhà T)", "9:30 - 11:30")
+                new Study("MOB403", "Android Networking", "Ca 6", "T308 (Nhà T)", "19:30 - 21:30", Color.parseColor("#FDB196")),
+                new Study("MOB401", "Lập trình Mobile đa nền tảng", "Ca 2", "T1108 (Nhà T)", "9:30 - 11:30",Color.parseColor("#FAD2A7"))
         )));
         studyGroups.add(new StudyGroup("2023-07-20", Arrays.asList(
-                new Study("MOB308", "Lập trình Game 2D", "Ca 2", "T1101 (Nhà T)", "9:30 - 11:30")
+                new Study("MOB308", "Lập trình Game 2D", "Ca 2", "T1101 (Nhà T)", "9:30 - 11:30",Color.parseColor("#FBEAC8"))
         )));
         studyGroups.add(new StudyGroup("2023-07-21", Arrays.asList(
-                new Study("MOB306", "Khởi sự doanh nghiệp", "Ca 6", "T306 (Nhà T)", "19:30 - 21:30"),
-                new Study("MOB402", "Lập trình Server cho Android", "Ca 6", "T1110 (Nhà T)", "19:30 - 21:30")
+                new Study("MOB306", "Khởi sự doanh nghiệp", "Ca 6", "T306 (Nhà T)", "19:30 - 21:30",Color.parseColor("#B1D9CD")),
+                new Study("MOB402", "Lập trình Server cho Android", "Ca 6", "T1110 (Nhà T)", "19:30 - 21:30",Color.parseColor("#93C2C6"))
         )));
 
         // Create an adapter to populate the list with study groups

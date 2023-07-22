@@ -1,5 +1,7 @@
 package com.example.myfplapplication.Adapter;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,6 +103,7 @@ public class StudyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private static class StudyViewHolder extends RecyclerView.ViewHolder {
         private TextView mon_hoc_id, ten_mon_hoc, dia_diem, ca, ngay_hoc;
+        private View view;
 
         public StudyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -109,6 +112,7 @@ public class StudyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             dia_diem = itemView.findViewById(R.id.dia_diem);
             ca = itemView.findViewById(R.id.ca);
             ngay_hoc = itemView.findViewById(R.id.ngay_hoc);
+            view = itemView.findViewById(R.id.view);
         }
 
         public void bind(Study study) {
@@ -117,6 +121,7 @@ public class StudyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             dia_diem.setText(study.dia_diem);
             ca.setText(study.ca);
             ngay_hoc.setText(study.ngay_hoc);
+            view.setBackgroundColor(Integer.parseInt(study.viewColor));
 
             // Load the image using your preferred image loading library
         }
