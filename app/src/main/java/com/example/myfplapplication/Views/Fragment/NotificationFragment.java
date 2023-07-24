@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.example.myfplapplication.Adapter.NotificationAdapter;
 import com.example.myfplapplication.Model.Notification;
 import com.example.myfplapplication.Model.NotificationGroup;
 import com.example.myfplapplication.R;
+import com.example.myfplapplication.Views.Activities.MainActivity;
 import com.example.myfplapplication.Views.ViewHolder.TabViewHolder;
 
 import java.util.ArrayList;
@@ -122,9 +124,9 @@ public class NotificationFragment extends Fragment {
         // Create a list of notification groups
         List<NotificationGroup> notificationGroups = new ArrayList<>();
         notificationGroups.add(new NotificationGroup("2023-07-19", Arrays.asList(
-                new Notification("Thông báo lịch học chuyên ngành...", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius ...", "10:35", "https://example.com/example.jpg", "unread"),
-                new Notification("Thông báo đăng ký thực hiện dự án...", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius ...", "09:25", "https://example.com/example.jpg", "unread"),
-                new Notification("Phòng CTSV thông báo nhắc nhở DS...", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius ...", "09:22", "https://example.com/example.jpg", "read")
+                new Notification("Thông báo lịch học chuyên ngành abcde fadskfj slkdfj lwejflkdjflkds fjlksjxfa lksdfjew aiofjsdlkfc", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius ...", "10:35", "https://example.com/example.jpg", "unread"),
+                new Notification("Thông báo đăng ký thực hiện dự án.abcdefadskfjaslkdfjlwejflkdjflkdsfjlksjxfalksdfjewaiofjsdlkfc", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius ...", "09:25", "https://example.com/example.jpg", "unread"),
+                new Notification("Phòng CTSV thông báo nhắc nhở DSabcdefadskfjaslkdfjlwejflkdjflkdsfjlksjxfalksdfjewaiofjsdlkfc", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius ...", "09:22", "https://example.com/example.jpg", "read")
         )));
         notificationGroups.add(new NotificationGroup("2023-07-18", Arrays.asList(
                 new Notification("Bạn đã điểm danh thành công...", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius ...", "10:21", "https://example.com/example.jpg", "read"),
@@ -145,15 +147,16 @@ public class NotificationFragment extends Fragment {
 
                 // Pass data to the new fragment using its arguments
                 Bundle args = new Bundle();
-                args.putParcelable("notification", notification);
+                args.putString("title", notification.title);
+                args.putString("description", notification.description);
+                args.putString("time", notification.time);
+                args.putString("imageUrl", notification.imageUrl);
+                args.putString("status", notification.status);
                 fragment.setArguments(args);
 
-                // Use the FragmentManager to perform a fragment transaction and switch to the new fragment
-                FragmentManager fragmentManager = getParentFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, fragment)
-                        .addToBackStack(null)
-                        .commit();
+                // Use the replaceFragment method of MainActivity to switch to the new fragment
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.replaceFragment(fragment);
             }
         });
 

@@ -7,7 +7,7 @@
     tools:context=".Views.Fragment.NotificationDetailFragment">
 
     <TextView
-        android:id="@+id/notificationTitle"
+        android:id="@+id/pageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -29,7 +29,7 @@
         android:src="@mipmap/ic_launcher"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notificationTitle"></ImageView>
+        app:layout_constraintTop_toBottomOf="@+id/pageTitle"></ImageView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,6 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <TextView
+            android:id="@+id/notificationTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Phòng khảo thí thông báo lịch thi Final tập trung ngày 25/07/2023"
@@ -110,6 +111,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/notificationContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_light"

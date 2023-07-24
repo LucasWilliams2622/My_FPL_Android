@@ -81,25 +81,27 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
             count++;
             if (position < count + group.notifications.size()) {
-                ((NotificationViewHolder) holder).bind(group.notifications.get(position - count));
+                Notification notification = group.notifications.get(position - count);
+                ((NotificationViewHolder) holder).bind(notification);
+
+                // Set an OnClickListener on the root view of the item view holder
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onItemClickListener != null) {
+                            onItemClickListener.onItemClick(notification);
+                        }
+                    }
+                });
+
                 return;
             }
             count += group.notifications.size();
         }
-        if (holder instanceof NotificationViewHolder) {
-            NotificationViewHolder notificationViewHolder = (NotificationViewHolder) holder;
-            //Notification notification = ...; // Get the notification object associated with this item
-            notificationViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onItemClickListener != null) {
-                        // onItemClickListener.onItemClick(notification);
-                    }
-                }
-            });
-        }
+
         throw new IllegalArgumentException("Invalid position");
     }
+
 
     @Override
     public int getItemCount() {

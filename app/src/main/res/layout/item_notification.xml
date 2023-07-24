@@ -34,6 +34,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.85"
+                    android:maxLines="1"
+                    android:ellipsize="marquee"
                     android:text="Test"
                     android:fontFamily="@font/inter_bold"
                     android:textColor="#26282A"
