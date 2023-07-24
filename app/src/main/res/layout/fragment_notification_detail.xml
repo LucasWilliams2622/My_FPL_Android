@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Views.Fragment.NotificationDetailFragment">
+
+    <TextView
+        android:id="@+id/pageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Thông báo"
+        android:textColor="@color/primary"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:maxHeight="250dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pageTitle"></ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="25dp"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <TextView
+            android:id="@+id/notificationTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phòng khảo thí thông báo lịch thi Final tập trung ngày 25/07/2023"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="#26282A"
+            android:textSize="22dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:fontFamily="@font/font_awesome_6_free_solid_900"
+                    android:textColor="#26282A"
+                    android:textSize="13dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="08:37 - 19.07.2023"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="#26282A"
+                    android:textSize="13dp"/>
+
+            </LinearLayout>
+
+            <!-- Add a spacer View with a layout_weight of 1 -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:fontFamily="@font/font_awesome_6_free_solid_900"
+                    android:textColor="#26282A"
+                    android:textSize="13dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="phuongnm2"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:textColor="#26282A"
+                    android:textSize="13dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/notificationContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_light"
+            android:textColor="#26282A"
+            android:textSize="15dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius libero lectus, nec gravida eros pharetra et. Etiam id pharetra quam. Nullam lacinia egestas dui a vulputate. Sed pellentesque lacinia felis, a malesuada orci. Donec nec justo mauris. Curabitur gravida eleifend consectetur. In hac habitasse platea dictumst. Curabitur eu viverra massa. Interdum et malesuada fames ac ante ipsum primis in faucibus."/>
+
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

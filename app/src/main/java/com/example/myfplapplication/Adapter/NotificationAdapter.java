@@ -15,7 +15,16 @@ import com.example.myfplapplication.R;
 
 import java.util.List;
 
+
 public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    public interface OnItemClickListener {
+        void onItemClick(Notification notification);
+    }
+
+    private OnItemClickListener onItemClickListener;
+
+
     private static final int VIEW_TYPE_DATE = 0;
     private static final int VIEW_TYPE_NOTIFICATION = 1;
 
@@ -24,6 +33,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public NotificationAdapter(List<NotificationGroup> notificationGroups) {
         this.notificationGroups = notificationGroups;
     }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
 
     @Override
     public int getItemViewType(int position) {
@@ -67,13 +81,27 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
             count++;
             if (position < count + group.notifications.size()) {
-                ((NotificationViewHolder) holder).bind(group.notifications.get(position - count));
+                Notification notification = group.notifications.get(position - count);
+                ((NotificationViewHolder) holder).bind(notification);
+
+                // Set an OnClickListener on the root view of the item view holder
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onItemClickListener != null) {
+                            onItemClickListener.onItemClick(notification);
+                        }
+                    }
+                });
+
                 return;
             }
             count += group.notifications.size();
         }
+
         throw new IllegalArgumentException("Invalid position");
     }
+
 
     @Override
     public int getItemCount() {
