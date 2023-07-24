@@ -7,11 +7,13 @@
     app:cardElevation="12dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <View
-            android:layout_width="23dp"
+            android:id="@+id/view"
+            android:layout_width="10dp"
             android:layout_height="match_parent"
             android:background="#FDB196"/>
         <LinearLayout
@@ -21,16 +23,19 @@
             android:layout_marginStart="10dp"
             android:paddingTop="8dp">
             <TextView
+                android:id="@+id/mon_hoc_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MOB403"
                 android:fontFamily="@font/inter_regular"/>
+
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/ten_mon_hoc"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_bold"
-                android:textSize="16dp"
-                android:text="Android NetWorking"/>
+                android:text="Android NetWorking"
+                android:textSize="16dp" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,6 +47,7 @@
                     android:src="@drawable/ic_map"
                     android:tint="@color/black"/>
                 <TextView
+                    android:id="@+id/dia_diem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -50,28 +56,46 @@
             </LinearLayout>
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/imgClock"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="6dp"
                 android:src="@drawable/ic_clock"
-                android:layout_marginTop="66dp"
-                android:layout_marginLeft="30dp"
-                android:tint="@color/black"/>
+                android:tint="@color/black" />
+
             <TextView
+                android:id="@+id/ca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="66dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
-                android:paddingBottom="5dp"
-                android:textStyle="normal"
+                android:layout_marginBottom="6dp"
+                android:layout_toEndOf="@+id/imgClock"
                 android:fontFamily="@font/inter_regular"
-                android:text="Ca 6 · 19:30 - 21:30"/>
-        </LinearLayout>
+                android:text="Ca 6"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/ngay_hoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginBottom="6dp"
+                android:layout_toEndOf="@+id/ca"
+                android:fontFamily="@font/inter_regular"
+                android:text="· 19:30 - 21:30"
+                android:textStyle="normal" />
+        </RelativeLayout>
 
 
     </LinearLayout>
