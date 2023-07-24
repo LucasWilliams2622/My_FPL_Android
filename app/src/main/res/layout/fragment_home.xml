@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
     android:orientation="vertical"
     tools:context=".Views.Fragment.HomeFragment">
@@ -14,6 +14,8 @@
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingTop="22dp">
+
+
 
         <TextView
             android:id="@+id/myTextView"
@@ -472,19 +474,12 @@
             android:textStyle="normal" />
 
     </LinearLayout>
-    <LinearLayout
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_news_list"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:orientation="horizontal">
+        android:layout_height="wrap_content" />
 
-    </LinearLayout>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_message"
-        android:contentDescription="Message"
-        app:backgroundTint="@color/primary"
-
-        app:layout_anchorGravity="bottom|end" />
 
 </LinearLayout>
