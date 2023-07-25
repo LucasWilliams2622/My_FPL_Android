@@ -19,8 +19,6 @@ import com.example.myfplapplication.Model.ScheduleStudy;
 import com.example.myfplapplication.R;
 
 import java.util.ArrayList;
-import java.util.List;
-
 
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerViewNews,recyclerViewScheduleStudy;
@@ -33,7 +31,6 @@ public class HomeFragment extends Fragment {
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,9 +47,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         TextView myTextView = view.findViewById(R.id.myTextView);
-        myTextView.setTypeface(null, Typeface.BOLD);
-
-
+        myTextView.setTypeface(null, Typeface.BOLD); // Đặt chữ in đậm
         recyclerViewNews = view.findViewById(R.id.recycler_news_list);
         recyclerViewScheduleStudy = view.findViewById(R.id.recycler_schedule_study_today);
 
