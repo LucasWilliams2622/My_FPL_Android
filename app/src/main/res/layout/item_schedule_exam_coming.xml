@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="12dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/border_schedule_blue"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="17dp">
+
+        <TextView
+            android:id="@+id/myTextView41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MOB403"
+            android:textColor="@color/title3"
+            android:textSize="10dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/myTextView51"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lập trình Mobile đa..."
+            android:textColor="@color/title3"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView21546"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_map"
+
+                android:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/myTextView79782ewq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phòng T308 (Nhà T)"
+                android:textColor="@color/title3"
+
+                android:textSize="10dp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView2153dsafsgfd"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_schedule"
+
+                android:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/myTextView7235ádfsfqwe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thứ bảy - 19/08/2023"
+                android:textColor="@color/title3"
+
+                android:textSize="10dp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView3dsafdsgf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_clock"
+                android:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/myTextView4dasfd6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ca 6 · 19:30 - 21:30"
+                android:textColor="@color/title3"
+                android:textSize="10dp"
+                android:textStyle="normal" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

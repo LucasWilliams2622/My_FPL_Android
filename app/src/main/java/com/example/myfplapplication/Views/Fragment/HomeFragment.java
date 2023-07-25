@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.myfplapplication.Adapter.ItemNewsHomeAdapter;
+import com.example.myfplapplication.Adapter.ScheduleStudyAdapter;
 import com.example.myfplapplication.Model.ItemNewsHome;
+import com.example.myfplapplication.Model.ScheduleStudy;
 import com.example.myfplapplication.R;
 
 import java.util.ArrayList;
@@ -21,9 +23,9 @@ import java.util.List;
 
 
 public class HomeFragment extends Fragment {
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerViewNews,recyclerViewScheduleStudy;
     private ItemNewsHomeAdapter itemNewsHome;
-
+    private ScheduleStudyAdapter scheduleStudyAdapter;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -40,7 +42,6 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
         }
     }
 
@@ -51,20 +52,26 @@ public class HomeFragment extends Fragment {
         TextView myTextView = view.findViewById(R.id.myTextView);
         myTextView.setTypeface(null, Typeface.BOLD);
 
-        recyclerView = view.findViewById(R.id.recycler_news_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        // Thêm các item vào danh sách itemList
+        recyclerViewNews = view.findViewById(R.id.recycler_news_list);
+        recyclerViewScheduleStudy = view.findViewById(R.id.recycler_schedule_study_today);
 
+        recyclerViewNews.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewScheduleStudy.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         ArrayList<ItemNewsHome> itemList = new ArrayList<>();
         itemList.add(new ItemNewsHome("Title 1", "Content 1Content 1Content 1Content 1Content 1Content 1", R.drawable.ic_launcher_background));
         itemList.add(new ItemNewsHome("Title 2", "Content 2", R.drawable.ic_launcher_background));
         itemList.add(new ItemNewsHome("Title 3", "Content 3", R.drawable.ic_launcher_background));
-
         itemNewsHome = new ItemNewsHomeAdapter(itemList);
-        recyclerView.setAdapter(itemNewsHome);
+        recyclerViewNews.setAdapter(itemNewsHome);
 
+        ArrayList<ScheduleStudy> itemListScheduleStudy = new ArrayList<>();
+        itemListScheduleStudy.add(new ScheduleStudy("Lập trình Android nâng cao", "MOB123","Phòng T302 (Tòa T)","Ca 6 19:30 -21:30"));
+        itemListScheduleStudy.add(new ScheduleStudy("Lập trình Android cơ bản", "MOB123","Phòng T302 (Tòa T)","Ca 6 19:30 -21:30"));
+        scheduleStudyAdapter = new ScheduleStudyAdapter(itemListScheduleStudy);
+
+        recyclerViewScheduleStudy.setAdapter(scheduleStudyAdapter);
         return view;
 //        return inflater.inflate(R.layout.fragment_home, container, false);
     }

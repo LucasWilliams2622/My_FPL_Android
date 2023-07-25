@@ -1,4 +1,5 @@
 package com.example.myfplapplication.Adapter;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,10 +8,12 @@ import android.widget.TextView;
 
 import com.example.myfplapplication.Model.ItemNewsHome;
 import com.example.myfplapplication.R;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
 public class ItemNewsHomeAdapter extends RecyclerView.Adapter<ItemNewsHomeAdapter.ItemViewHolder> {
     private List<ItemNewsHome> itemList;
 
@@ -41,7 +44,7 @@ public class ItemNewsHomeAdapter extends RecyclerView.Adapter<ItemNewsHomeAdapte
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
         TextView itemTitle;
         TextView itemContent;
-        ImageView    itemImage;
+        ImageView itemImage;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);

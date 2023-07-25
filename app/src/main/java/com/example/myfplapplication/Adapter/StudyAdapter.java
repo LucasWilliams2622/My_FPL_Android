@@ -21,7 +21,6 @@ public class StudyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private static final int VIEW_TYPE_DATE = 0;
     private static final int VIEW_TYPE_NOTIFICATION = 1;
-
     private List<StudyGroup> studyGroups;
 
     public StudyAdapter(List<StudyGroup> studyGroups) {
