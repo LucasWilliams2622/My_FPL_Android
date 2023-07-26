@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myfplapplication.Adapter.ExamAdapter;
 import com.example.myfplapplication.Adapter.StudyAdapter;
 import com.example.myfplapplication.Model.Study;
 import com.example.myfplapplication.Model.StudyGroup;
@@ -44,13 +45,14 @@ public class ScheduleExamFragment extends Fragment {
         )));
 
         // Create an adapter to populate the list with study groups
-        StudyAdapter studyAdapter = new StudyAdapter(studyGroups);
+        //StudyAdapter studyAdapter = new StudyAdapter(studyGroups);
 
+        ExamAdapter examAdapter = new ExamAdapter(studyGroups);
         // Set the layout manager of the RecyclerView
         binding.rvExam.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Set the adapter of the RecyclerView
-        binding.rvExam.setAdapter(studyAdapter);
+        binding.rvExam.setAdapter(examAdapter);
 
         return binding.getRoot();
     }
