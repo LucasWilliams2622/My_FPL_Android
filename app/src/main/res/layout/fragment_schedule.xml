@@ -22,6 +22,7 @@
         android:layout_width="250dp"
         app:tabSelectedTextColor="#F26F25"
         app:tabIndicatorColor="#F26F25"
+        app:tabTextColor="@color/black"
         android:layout_height="wrap_content"/>
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpSchedule"
