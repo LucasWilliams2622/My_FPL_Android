@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.myfplapplication.Model.LoginInfo;
 import com.example.myfplapplication.R;
 import com.example.myfplapplication.Service.APIService;
+import com.example.myfplapplication.Service.UserService;
 
 import java.util.ArrayList;
 
@@ -52,18 +53,18 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<LoginInfo> call, Response<LoginInfo> response) {
                         LoginInfo loginInfo = response.body();
-
-
-                        Toast.makeText(LoginActivity.this, "" + loginInfo.token, Toast.LENGTH_SHORT).show();
+                        UserService userService = new UserService(LoginActivity.this);
+                        userService.saveData(loginInfo);
+                        Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override
                     public void onFailure(Call<LoginInfo> call, Throwable t) {
-                        Toast.makeText(LoginActivity.this, "Không thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                     }
                 });
-//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                startActivity(intent);
             }
         });
 
