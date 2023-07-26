@@ -3,6 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
     app:cardElevation="12dp">
     <LinearLayout
         android:layout_width="wrap_content"
@@ -14,7 +15,7 @@
         android:paddingVertical="17dp">
 
         <TextView
-            android:id="@+id/myTextView41"
+            android:id="@+id/tv_code_exam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="MOB403"
@@ -23,7 +24,7 @@
             android:textStyle="normal" />
 
         <TextView
-            android:id="@+id/myTextView51"
+            android:id="@+id/tv_name_exam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lập trình Mobile đa..."
@@ -47,7 +48,7 @@
                 android:tint="@color/black" />
 
             <TextView
-                android:id="@+id/myTextView79782ewq"
+                android:id="@+id/tv_location_exam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Phòng T308 (Nhà T)"
@@ -73,7 +74,7 @@
                 android:tint="@color/black" />
 
             <TextView
-                android:id="@+id/myTextView7235ádfsfqwe"
+                android:id="@+id/tv_time_exam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thứ bảy - 19/08/2023"
@@ -98,7 +99,7 @@
                 android:tint="@color/black" />
 
             <TextView
-                android:id="@+id/myTextView4dasfd6"
+                android:id="@+id/tv_date_exam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ca 6 · 19:30 - 21:30"

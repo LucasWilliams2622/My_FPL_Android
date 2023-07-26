@@ -13,19 +13,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.myfplapplication.Adapter.ItemNewsHomeAdapter;
+import com.example.myfplapplication.Adapter.ScheduleExamAdapter;
 import com.example.myfplapplication.Adapter.ScheduleStudyAdapter;
 import com.example.myfplapplication.Model.ItemNewsHome;
+import com.example.myfplapplication.Model.ScheduleExam;
 import com.example.myfplapplication.Model.ScheduleStudy;
 import com.example.myfplapplication.R;
 
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
-    private RecyclerView recyclerViewNews,recyclerViewScheduleStudy;
+    private RecyclerView recyclerViewNews,recyclerViewScheduleStudy,recyclerViewScheduleExam;
     private ItemNewsHomeAdapter itemNewsHome;
     private ScheduleStudyAdapter scheduleStudyAdapter;
+    private  ScheduleExamAdapter scheduleExamAdapter;
     public HomeFragment() {
-        // Required empty public constructor
     }
 
     public static HomeFragment newInstance(String param1, String param2) {
@@ -50,9 +52,10 @@ public class HomeFragment extends Fragment {
         myTextView.setTypeface(null, Typeface.BOLD); // Đặt chữ in đậm
         recyclerViewNews = view.findViewById(R.id.recycler_news_list);
         recyclerViewScheduleStudy = view.findViewById(R.id.recycler_schedule_study_today);
-
+        recyclerViewScheduleExam = view.findViewById(R.id.recycler_schedule_exam_coming);
         recyclerViewNews.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerViewScheduleStudy.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewScheduleExam.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         ArrayList<ItemNewsHome> itemList = new ArrayList<>();
         itemList.add(new ItemNewsHome("Title 1", "Content 1Content 1Content 1Content 1Content 1Content 1", R.drawable.ic_launcher_background));
@@ -65,8 +68,14 @@ public class HomeFragment extends Fragment {
         itemListScheduleStudy.add(new ScheduleStudy("Lập trình Android nâng cao", "MOB123","Phòng T302 (Tòa T)","Ca 6 19:30 -21:30"));
         itemListScheduleStudy.add(new ScheduleStudy("Lập trình Android cơ bản", "MOB123","Phòng T302 (Tòa T)","Ca 6 19:30 -21:30"));
         scheduleStudyAdapter = new ScheduleStudyAdapter(itemListScheduleStudy);
-
         recyclerViewScheduleStudy.setAdapter(scheduleStudyAdapter);
+
+        ArrayList<ScheduleExam> itemListScheduleExam = new ArrayList<>();
+        itemListScheduleExam.add(new ScheduleExam("Lập trình Android nâng cao", "MOB123","Phòng T302 (Tòa T)","Thứ 7 12/12/2012","Ca 6 19:30 -21:30"));
+        itemListScheduleExam.add(new ScheduleExam("Lập trình Android cơ bản", "MOB123","Phòng T302 (Tòa T)","Thứ 7 12/12/2012","Ca 6 19:30 -21:30"));
+        scheduleExamAdapter = new ScheduleExamAdapter(itemListScheduleExam);
+        recyclerViewScheduleExam.setAdapter(scheduleExamAdapter);
+
         return view;
 //        return inflater.inflate(R.layout.fragment_home, container, false);
     }
