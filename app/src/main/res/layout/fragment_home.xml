@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
     android:orientation="vertical"
     tools:context=".Views.Fragment.HomeFragment">
@@ -44,166 +44,12 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_schedule_study_today"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@color/background2"
-            android:orientation="vertical"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="17dp">
-
-            <TextView
-                android:id="@+id/myTextView444"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MOB403"
-                android:textColor="@color/title2"
-                android:textSize="10dp"
-                android:textStyle="normal" />
-
-            <TextView
-                android:id="@+id/myTextView555"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Android Networking"
-                android:textColor="@color/title2"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView222"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:src="@drawable/ic_map" />
-
-                <TextView
-                    android:id="@+id/myTextView777"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phòng T308 (Nhà T)"
-                    android:textColor="@color/title2"
-                    android:textSize="10dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView7734dsafdsg56"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:src="@drawable/ic_clock"
-                    android:tint="@color/white" />
-
-                <TextView
-                    android:id="@+id/myTextView679"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ca 6 · 19:30 - 21:30"
-                    android:textColor="@color/title2"
-                    android:textSize="10dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/background3"
-            android:orientation="vertical"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="17dp">
-
-            <TextView
-                android:id="@+id/myTextView42311"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MOB403"
-                android:textColor="@color/title3"
-                android:textSize="10dp"
-                android:textStyle="normal" />
-
-            <TextView
-                android:id="@+id/myTextView54321"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lập trình Mobile đa..."
-                android:textColor="@color/title3"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView2143adsfs2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:src="@drawable/ic_map"
-
-                    android:tint="@color/black" />
-
-                <TextView
-                    android:id="@+id/myTextView7254"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phòng T308 (Nhà T)"
-                    android:textColor="@color/title3"
-
-                    android:textSize="10dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView4323"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:src="@drawable/ic_clock"
-                    android:tint="@color/black" />
-
-                <TextView
-                    android:id="@+id/myTextView46543"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ca 6 · 19:30 - 21:30"
-                    android:textColor="@color/title3"
-
-                    android:textSize="10dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -472,19 +318,26 @@
             android:textStyle="normal" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
     </LinearLayout>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_message"
-        android:contentDescription="Message"
-        app:backgroundTint="@color/primary"
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--        android:id="@+id/fab_button"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:src="@drawable/ic_message"-->
+    <!--        android:contentDescription="Message"-->
+    <!--        app:backgroundTint="@color/primary"-->
 
-        app:layout_anchorGravity="bottom|end" />
+    <!--        app:layout_anchorGravity="bottom|end" />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_news_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
 
 </LinearLayout>
