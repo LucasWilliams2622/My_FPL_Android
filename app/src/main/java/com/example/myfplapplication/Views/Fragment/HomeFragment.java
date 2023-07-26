@@ -112,12 +112,6 @@ public class HomeFragment extends Fragment {
         itemNewsHome = new ItemNewsHomeAdapter(itemList);
         recyclerViewNews.setAdapter(itemNewsHome);
 
-        ArrayList<ScheduleStudy> itemListScheduleStudy = new ArrayList<>();
-        itemListScheduleStudy.add(new ScheduleStudy("Lập trình Android nâng cao", "MOB123","Phòng T302 (Tòa T)","Ca 6 19:30 -21:30"));
-        itemListScheduleStudy.add(new ScheduleStudy("Lập trình Android cơ bản", "MOB123","Phòng T302 (Tòa T)","Ca 6 19:30 -21:30"));
-        scheduleStudyAdapter = new ScheduleStudyAdapter(itemListScheduleStudy);
-        recyclerViewScheduleStudy.setAdapter(scheduleStudyAdapter);
-
         ArrayList<ScheduleExam> itemListScheduleExam = new ArrayList<>();
         itemListScheduleExam.add(new ScheduleExam("Lập trình Android nâng cao", "MOB123","Phòng T302 (Tòa T)","Thứ 7 12/12/2012","Ca 6 19:30 -21:30"));
         itemListScheduleExam.add(new ScheduleExam("Lập trình Android cơ bản", "MOB123","Phòng T302 (Tòa T)","Thứ 7 12/12/2012","Ca 6 19:30 -21:30"));
