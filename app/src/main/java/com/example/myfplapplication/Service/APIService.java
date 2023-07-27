@@ -23,4 +23,7 @@ public interface APIService {
 
     @GET("lichhoc")
     Call<ArrayList<LichHoc>> GetLichHoc(@Header("Authorization") String token);
+
+    @GET("lichhoc/homnay")
+    Call<ArrayList<LichHoc>> GetLichHocHomNay(@Header("Authorization") String token);
 }

@@ -43,6 +43,12 @@ public class HomeFragment extends Fragment {
     private ItemNewsHomeAdapter itemNewsHome;
     private ScheduleStudyAdapter scheduleStudyAdapter;
     private  ScheduleExamAdapter scheduleExamAdapter;
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(APIService.base_link)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+    APIService apiService = retrofit.create(APIService.class);
     public HomeFragment() {
     }
 
@@ -63,8 +69,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ArrayList<ScheduleStudy> itemListScheduleStudy = new ArrayList<>();
-
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         TextView myTextView = view.findViewById(R.id.myTextView);
         myTextView.setTypeface(null, Typeface.BOLD); // Đặt chữ in đậm
@@ -72,32 +76,6 @@ public class HomeFragment extends Fragment {
         UserService userService = new UserService(getContext());
         myTextView2.setText(userService.getName());
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(APIService.base_link)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        APIService apiService = retrofit.create(APIService.class);
-
-        Call<ArrayList<LichHoc>> response = apiService.GetLichHoc(userService.getToken());
-        response.enqueue(new Callback<ArrayList<LichHoc>>() {
-            @Override
-            public void onResponse(Call<ArrayList<LichHoc>> call, Response<ArrayList<LichHoc>> response) {
-                ArrayList<LichHoc> dsLichHoc = response.body();
-                for(int i = 0; i < dsLichHoc.size(); i++){
-                    if(i > MAX_SCHEDULE_SIZE - 1) break;
-                    LichHoc lichHoc = dsLichHoc.get(i);
-                    itemListScheduleStudy.add(new ScheduleStudy(lichHoc.ten_mon_hoc, lichHoc.mon_hoc_id, lichHoc.dia_diem, lichHoc.getCaHoc()));
-                }
-                scheduleStudyAdapter = new ScheduleStudyAdapter(itemListScheduleStudy);
-
-                recyclerViewScheduleStudy.setAdapter(scheduleStudyAdapter);
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<LichHoc>> call, Throwable t) {
-                Toast.makeText(getContext(), "Không thể lấy dữ liệu", Toast.LENGTH_SHORT).show();
-            }
-        });
         recyclerViewNews = view.findViewById(R.id.recycler_news_list);
         recyclerViewScheduleStudy = view.findViewById(R.id.recycler_schedule_study_today);
         recyclerViewScheduleExam = view.findViewById(R.id.recycler_schedule_exam_coming);
@@ -117,7 +95,33 @@ public class HomeFragment extends Fragment {
         itemListScheduleExam.add(new ScheduleExam("Lập trình Android cơ bản", "MOB123","Phòng T302 (Tòa T)","Thứ 7 12/12/2012","Ca 6 19:30 -21:30"));
         scheduleExamAdapter = new ScheduleExamAdapter(itemListScheduleExam);
         recyclerViewScheduleExam.setAdapter(scheduleExamAdapter);
+        fetchData();
         return view;
 //        return inflater.inflate(R.layout.fragment_home, container, false);
+    }
+
+    public void fetchData() {
+        ArrayList<ScheduleStudy> itemListScheduleStudy = new ArrayList<>();
+        UserService userService = new UserService(getContext());
+        Call<ArrayList<LichHoc>> response = apiService.GetLichHocHomNay(userService.getToken());
+        response.enqueue(new Callback<ArrayList<LichHoc>>() {
+            @Override
+            public void onResponse(Call<ArrayList<LichHoc>> call, Response<ArrayList<LichHoc>> response) {
+                ArrayList<LichHoc> dsLichHoc = response.body();
+                for(int i = 0; i < dsLichHoc.size(); i++){
+                    if(i > MAX_SCHEDULE_SIZE - 1) break;
+                    LichHoc lichHoc = dsLichHoc.get(i);
+                    itemListScheduleStudy.add(new ScheduleStudy(lichHoc.ten_mon_hoc, lichHoc.mon_hoc_id, lichHoc.dia_diem, lichHoc.getCaHoc()));
+                }
+                scheduleStudyAdapter = new ScheduleStudyAdapter(itemListScheduleStudy);
+
+                recyclerViewScheduleStudy.setAdapter(scheduleStudyAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<LichHoc>> call, Throwable t) {
+                Toast.makeText(getContext(), "Không thể lấy dữ liệu", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
