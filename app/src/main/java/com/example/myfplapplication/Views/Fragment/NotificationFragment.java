@@ -1,5 +1,9 @@
 package com.example.myfplapplication.Views.Fragment;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -7,9 +11,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,38 +74,42 @@ public class NotificationFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-    // Tab
+        setupTabList(view);
+        setupNotificationList(view);
+    }
+
+    private void setupTabList(View view) {
         RecyclerView tabList = view.findViewById(R.id.tab_list);
         tabList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         // Create a list of tab labels
+        List<String> tabLabels = createTabLabels();
+
+        // Create an adapter to populate the list with tabs
+        RecyclerView.Adapter tabAdapter = createTabAdapter(tabLabels);
+
+        // Set the adapter of the RecyclerView
+        tabList.setAdapter(tabAdapter);
+    }
+
+    private List<String> createTabLabels() {
         List<String> tabLabels = new ArrayList<>();
         tabLabels.add("Tất cả");
         tabLabels.add("Cá nhân");
         tabLabels.add("Học tập");
         tabLabels.add("Hoạt động");
         tabLabels.add("Học phí");
+        return tabLabels;
+    }
 
-        // Create an adapter to populate the list with tabs
-        RecyclerView.Adapter tabAdapter = new RecyclerView.Adapter<TabViewHolder>() {
+    private RecyclerView.Adapter createTabAdapter(List<String> tabLabels) {
+        return new RecyclerView.Adapter<TabViewHolder>() {
             private int selectedPosition = 0;
+
             @NonNull
             @Override
             public TabViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                TextView textView = new TextView(parent.getContext());
-                ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
-                layoutParams.setMargins(8, 1, 8, 1);
-                textView.setLayoutParams(layoutParams);
-                textView.setPadding(64, 20, 64, 20);
-
-                // Set the background color and corner radius of the tab
-                GradientDrawable background = new GradientDrawable();
-                background.setColor(Color.TRANSPARENT);
-                background.setCornerRadius(50);
-                background.setStroke(2, Color.parseColor("#F26F25"));
-                textView.setBackground(background);
+                TextView textView = createTabTextView(parent);
 
                 // Set an OnClickListener to handle tab clicks
                 textView.setOnClickListener(new View.OnClickListener() {
@@ -114,13 +124,9 @@ public class NotificationFragment extends Fragment {
                             String selectedLabel = tabLabels.get(position);
 
                             // Filter the notifications based on the selected tab label
-                            List<Notification> filteredNotifications = new ArrayList<>();
-                            for (Notification notification : notificationList) {
-                                if (selectedLabel.equals("Tất cả") || notification.category.equals(selectedLabel)) {
-                                    filteredNotifications.add(notification);
-                                }
-                            }
+                            List<Notification> filteredNotifications = filterNotificationsByTabLabel(selectedLabel);
 
+                            // Group the filtered notifications by date
                             List<NotificationGroup> notificationGroups = groupNotificationsByDate(filteredNotifications);
 
                             // Update the adapter of the RecyclerView with the filtered notifications
@@ -129,7 +135,6 @@ public class NotificationFragment extends Fragment {
                         }
                     }
                 });
-
 
                 return new TabViewHolder(textView);
             }
@@ -160,14 +165,39 @@ public class NotificationFragment extends Fragment {
                 return tabLabels.size();
             }
         };
+    }
 
-        // Set the adapter of the RecyclerView
-        tabList.setAdapter(tabAdapter);
+    private TextView createTabTextView(ViewGroup parent) {
+        TextView textView = new TextView(parent.getContext());
+        ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(8, 1, 8, 1);
+        textView.setLayoutParams(layoutParams);
+        textView.setPadding(64, 20, 64, 20);
 
-    // Notification
+        // Set the background color and corner radius of the tab
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(Color.TRANSPARENT);
+        background.setCornerRadius(50);
+        background.setStroke(2, Color.parseColor("#F26F25"));
+        textView.setBackground(background);
+
+        return textView;
+    }
+
+    private List<Notification> filterNotificationsByTabLabel(String selectedLabel) {
+        List<Notification> filteredNotifications = new ArrayList<>();
+        for (Notification notification : notificationList) {
+            if (selectedLabel.equals("Tất cả") || notification.category.equals(selectedLabel)) {
+                filteredNotifications.add(notification);
+            }
+        }
+        return filteredNotifications;
+    }
+
+    private void setupNotificationList(View view) {
         notificationRecyclerView = view.findViewById(R.id.notification_list);
-
-        // Create a list of Notification objects
 
         UserService userService = new UserService(getContext());
         Call<ArrayList<Notification>> responseCall = apiService.GetNews((userService.getToken()));
@@ -181,30 +211,12 @@ public class NotificationFragment extends Fragment {
                     for (Notification notification : notifications) {
                         notificationList.add(notification);
                     }
-                    // Parse the date and time strings into Date objects
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-                    for (Notification notification : notificationList) {
-                        String dateTimeString = notification.date + " " + notification.time;
-                        Date dateTime = null;
-                        try {
-                            dateTime = dateFormat.parse(dateTimeString);
-                        } catch (ParseException e) {
-                            throw new RuntimeException(e);
-                        }
-                        notification.dateTime = dateTime;
-                    }
 
-                    // Sort the notifications by date and time
-                    Collections.sort(notificationList, new Comparator<Notification>() {
-                        @Override
-                        public int compare(Notification n1, Notification n2) {
-                            return n2.dateTime.compareTo(n1.dateTime);
-                        }
-                    });
+                    parseDateAndTimeStrings(notificationList);
 
+                    sortNotificationsByDateTime(notificationList);
 
                     List<NotificationGroup> notificationGroups = groupNotificationsByDate(notificationList);
-
 
                     // Create an adapter to populate the list with notification groups
                     NotificationAdapter notificationAdapter = new NotificationAdapter(notificationGroups);
@@ -242,7 +254,29 @@ public class NotificationFragment extends Fragment {
                 Log.d("Notification", "onFailure: " + t.getMessage());
             }
         });
+    }
 
+    private void parseDateAndTimeStrings(List<Notification> notifications) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        for (Notification notification : notifications) {
+            String dateTimeString = notification.date + " " + notification.time;
+            Date dateTime = null;
+            try {
+                dateTime = dateFormat.parse(dateTimeString);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            notification.dateTime = dateTime;
+        }
+    }
+
+    private void sortNotificationsByDateTime(List<Notification> notifications) {
+        Collections.sort(notifications, new Comparator<Notification>() {
+            @Override
+            public int compare(Notification n1, Notification n2) {
+                return n2.dateTime.compareTo(n1.dateTime);
+            }
+        });
     }
 
     private List<NotificationGroup> groupNotificationsByDate(List<Notification> notifications) {
@@ -287,5 +321,4 @@ public class NotificationFragment extends Fragment {
 
         return notificationGroups;
     }
-
 }
