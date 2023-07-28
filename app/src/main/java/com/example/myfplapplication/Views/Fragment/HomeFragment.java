@@ -18,6 +18,7 @@ import com.example.myfplapplication.Adapter.ItemNewsHomeAdapter;
 import com.example.myfplapplication.Adapter.ScheduleExamAdapter;
 import com.example.myfplapplication.Adapter.ScheduleStudyAdapter;
 import com.example.myfplapplication.Model.ItemNewsHome;
+import com.example.myfplapplication.Model.News;
 import com.example.myfplapplication.Model.ScheduleExam;
 import com.example.myfplapplication.Model.LichHoc;
 import com.example.myfplapplication.Model.LoginInfo;
@@ -83,13 +84,6 @@ public class HomeFragment extends Fragment {
         recyclerViewScheduleStudy.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerViewScheduleExam.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        ArrayList<ItemNewsHome> itemList = new ArrayList<>();
-        itemList.add(new ItemNewsHome("Title 1", "Content 1Content 1Content 1Content 1Content 1Content 1", R.drawable.ic_launcher_background));
-        itemList.add(new ItemNewsHome("Title 2", "Content 2", R.drawable.ic_launcher_background));
-        itemList.add(new ItemNewsHome("Title 3", "Content 3", R.drawable.ic_launcher_background));
-        itemNewsHome = new ItemNewsHomeAdapter(itemList);
-        recyclerViewNews.setAdapter(itemNewsHome);
-
         ArrayList<ScheduleExam> itemListScheduleExam = new ArrayList<>();
         itemListScheduleExam.add(new ScheduleExam("Lập trình Android nâng cao", "MOB123","Phòng T302 (Tòa T)","Thứ 7 12/12/2012","Ca 6 19:30 -21:30"));
         itemListScheduleExam.add(new ScheduleExam("Lập trình Android cơ bản", "MOB123","Phòng T302 (Tòa T)","Thứ 7 12/12/2012","Ca 6 19:30 -21:30"));
@@ -120,6 +114,27 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ArrayList<LichHoc>> call, Throwable t) {
+                Toast.makeText(getContext(), "Không thể lấy dữ liệu", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Call<ArrayList<News>> getNews = apiService.GetNews(userService.getToken());
+        getNews.enqueue(new Callback<ArrayList<News>>() {
+            @Override
+            public void onResponse(Call<ArrayList<News>> call, Response<ArrayList<News>> response) {
+                ArrayList<News> dsNews = response.body();
+                ArrayList<ItemNewsHome> itemList = new ArrayList<>();
+                for(int i = 0; i < dsNews.size(); i++){
+                    if(i > MAX_SCHEDULE_SIZE - 1) break;
+                    News news = dsNews.get(i);
+                    itemList.add(new ItemNewsHome(news.title, news.description, news.image));
+                }
+                itemNewsHome = new ItemNewsHomeAdapter(itemList);
+                recyclerViewNews.setAdapter(itemNewsHome);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<News>> call, Throwable t) {
                 Toast.makeText(getContext(), "Không thể lấy dữ liệu", Toast.LENGTH_SHORT).show();
             }
         });
