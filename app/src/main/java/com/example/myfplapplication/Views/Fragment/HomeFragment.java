@@ -19,6 +19,7 @@ import com.example.myfplapplication.Adapter.ScheduleExamAdapter;
 import com.example.myfplapplication.Adapter.ScheduleStudyAdapter;
 import com.example.myfplapplication.Model.ItemNewsHome;
 import com.example.myfplapplication.Model.News;
+import com.example.myfplapplication.Model.Notification;
 import com.example.myfplapplication.Model.ScheduleExam;
 import com.example.myfplapplication.Model.LichHoc;
 import com.example.myfplapplication.Model.LoginInfo;
@@ -118,23 +119,23 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        Call<ArrayList<News>> getNews = apiService.GetNews(userService.getToken());
-        getNews.enqueue(new Callback<ArrayList<News>>() {
+        Call<ArrayList<Notification>> getNews = apiService.GetNews(userService.getToken());
+        getNews.enqueue(new Callback<ArrayList<Notification>>() {
             @Override
-            public void onResponse(Call<ArrayList<News>> call, Response<ArrayList<News>> response) {
-                ArrayList<News> dsNews = response.body();
+            public void onResponse(Call<ArrayList<Notification>> call, Response<ArrayList<Notification>> response) {
+                ArrayList<Notification> dsNews = response.body();
                 ArrayList<ItemNewsHome> itemList = new ArrayList<>();
                 for(int i = 0; i < dsNews.size(); i++){
                     if(i > MAX_SCHEDULE_SIZE - 1) break;
-                    News news = dsNews.get(i);
-                    itemList.add(new ItemNewsHome(news.title, news.description, news.image));
+                    Notification news = dsNews.get(i);
+                    itemList.add(new ItemNewsHome(news.title, news.description, news.imageUrl));
                 }
                 itemNewsHome = new ItemNewsHomeAdapter(itemList);
                 recyclerViewNews.setAdapter(itemNewsHome);
             }
 
             @Override
-            public void onFailure(Call<ArrayList<News>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Notification>> call, Throwable t) {
                 Toast.makeText(getContext(), "Không thể lấy dữ liệu", Toast.LENGTH_SHORT).show();
             }
         });

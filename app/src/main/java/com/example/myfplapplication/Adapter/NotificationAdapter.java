@@ -13,6 +13,7 @@ import com.example.myfplapplication.Model.Notification;
 import com.example.myfplapplication.Model.NotificationGroup;
 import com.example.myfplapplication.R;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 
@@ -142,7 +143,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         public void bind(Notification notification) {
             titleView.setText(notification.title);
             descriptionView.setText(notification.description);
-            timeView.setText(notification.time);
+            timeView.setText(new SimpleDateFormat("HH:mm").format(notification.dateTime));
             // Load the image using your preferred image loading library
         }
     }
