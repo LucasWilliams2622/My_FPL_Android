@@ -7,11 +7,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +54,8 @@ public class NotificationFragment extends Fragment {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     APIService apiService = retrofit.create(APIService.class);
+    List<Notification> notificationList = new ArrayList<>();
+    RecyclerView notificationRecyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -109,9 +109,27 @@ public class NotificationFragment extends Fragment {
                         if (position != selectedPosition) {
                             selectedPosition = position;
                             notifyDataSetChanged();
+
+                            // Get the selected tab label
+                            String selectedLabel = tabLabels.get(position);
+
+                            // Filter the notifications based on the selected tab label
+                            List<Notification> filteredNotifications = new ArrayList<>();
+                            for (Notification notification : notificationList) {
+                                if (selectedLabel.equals("Tất cả") || notification.category.equals(selectedLabel)) {
+                                    filteredNotifications.add(notification);
+                                }
+                            }
+
+                            List<NotificationGroup> notificationGroups = groupNotificationsByDate(filteredNotifications);
+
+                            // Update the adapter of the RecyclerView with the filtered notifications
+                            NotificationAdapter notificationAdapter = new NotificationAdapter(notificationGroups);
+                            notificationRecyclerView.setAdapter(notificationAdapter);
                         }
                     }
                 });
+
 
                 return new TabViewHolder(textView);
             }
@@ -147,10 +165,10 @@ public class NotificationFragment extends Fragment {
         tabList.setAdapter(tabAdapter);
 
     // Notification
-        RecyclerView notificationRecyclerView = view.findViewById(R.id.notification_list);
+        notificationRecyclerView = view.findViewById(R.id.notification_list);
 
         // Create a list of Notification objects
-        List<Notification> notificationList = new ArrayList<>();
+
         UserService userService = new UserService(getContext());
         Call<ArrayList<Notification>> responseCall = apiService.GetNews((userService.getToken()));
 
@@ -163,7 +181,6 @@ public class NotificationFragment extends Fragment {
                     for (Notification notification : notifications) {
                         notificationList.add(notification);
                     }
-
                     // Parse the date and time strings into Date objects
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                     for (Notification notification : notificationList) {
@@ -186,44 +203,7 @@ public class NotificationFragment extends Fragment {
                     });
 
 
-                    // Group the notifications by date
-                    Map<String, List<Notification>> groupedNotifications = new HashMap<>();
-                    for (Notification notification : notificationList) {
-                        String date = notification.date;
-                        if (!groupedNotifications.containsKey(date)) {
-                            groupedNotifications.put(date, new ArrayList<>());
-                        }
-                        groupedNotifications.get(date).add(notification);
-                    }
-
-                    // Create a list of NotificationGroup objects
-                    List<NotificationGroup> notificationGroups = new ArrayList<>();
-                    for (Map.Entry<String, List<Notification>> entry : groupedNotifications.entrySet()) {
-                        String date = entry.getKey();
-                        List<Notification> groupNotifications = entry.getValue();
-                        NotificationGroup notificationGroup = new NotificationGroup(date, groupNotifications);
-                        notificationGroups.add(notificationGroup);
-                    }
-
-                    // Parse the date strings into Date objects
-                    SimpleDateFormat groupDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    for (NotificationGroup group : notificationGroups) {
-                        Date date = null;
-                        try {
-                            date = groupDateFormat.parse(group.date);
-                        } catch (ParseException e) {
-                            throw new RuntimeException(e);
-                        }
-                        group.dateObject = date;
-                    }
-
-                    // Sort the notification groups by date
-                    Collections.sort(notificationGroups, new Comparator<NotificationGroup>() {
-                        @Override
-                        public int compare(NotificationGroup g1, NotificationGroup g2) {
-                            return g2.dateObject.compareTo(g1.dateObject);
-                        }
-                    });
+                    List<NotificationGroup> notificationGroups = groupNotificationsByDate(notificationList);
 
 
                     // Create an adapter to populate the list with notification groups
@@ -264,4 +244,48 @@ public class NotificationFragment extends Fragment {
         });
 
     }
+
+    private List<NotificationGroup> groupNotificationsByDate(List<Notification> notifications) {
+        // Group the notifications by date
+        Map<String, List<Notification>> groupedNotifications = new HashMap<>();
+        for (Notification notification : notifications) {
+            String date = notification.date;
+            if (!groupedNotifications.containsKey(date)) {
+                groupedNotifications.put(date, new ArrayList<>());
+            }
+            groupedNotifications.get(date).add(notification);
+        }
+
+        // Create a list of NotificationGroup objects
+        List<NotificationGroup> notificationGroups = new ArrayList<>();
+        for (Map.Entry<String, List<Notification>> entry : groupedNotifications.entrySet()) {
+            String date = entry.getKey();
+            List<Notification> groupNotifications = entry.getValue();
+            NotificationGroup notificationGroup = new NotificationGroup(date, groupNotifications);
+            notificationGroups.add(notificationGroup);
+        }
+
+        // Parse the date strings into Date objects
+        SimpleDateFormat groupDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        for (NotificationGroup group : notificationGroups) {
+            Date date = null;
+            try {
+                date = groupDateFormat.parse(group.date);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            group.dateObject = date;
+        }
+
+        // Sort the notification groups by date
+        Collections.sort(notificationGroups, new Comparator<NotificationGroup>() {
+            @Override
+            public int compare(NotificationGroup g1, NotificationGroup g2) {
+                return g2.dateObject.compareTo(g1.dateObject);
+            }
+        });
+
+        return notificationGroups;
+    }
+
 }
