@@ -14,7 +14,7 @@ public class LichHoc {
     public String mon_hoc_id;
     public String ca;
     public String dia_diem;
-    public Date ngay_hoc;
+    public String ngay_hoc;
     public String lop_hoc;
     public String ten_mon_hoc;
 
@@ -32,6 +32,24 @@ public class LichHoc {
                 return "Ca 5 - 17:30 - 19:30";
             case "6":
                 return "Ca 6 - 19:30 - 21:30";
+        }
+        return "";
+    }
+
+    public String getCaHocTime() {
+        switch (ca) {
+            case "1":
+                return "07:30 - 09:30";
+            case "2":
+                return "09:45 - 11:45";
+            case "3":
+                return "13:30 - 15:30";
+            case "4":
+                return "15:30 - 17:30";
+            case "5":
+                return "17:30 - 19:30";
+            case "6":
+                return "19:30 - 21:30";
         }
         return "";
     }
