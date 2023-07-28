@@ -1,5 +1,6 @@
 package com.example.myfplapplication.Views.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.myfplapplication.R;
+import com.example.myfplapplication.Service.UserService;
+import com.example.myfplapplication.Views.Activities.LoginActivity;
+import com.example.myfplapplication.Views.Activities.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +66,23 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        TextView logoutButton = view.findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                UserService userService = new UserService(getContext());
+                userService.clearStorage();
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
+
+
+        return view;
     }
 }

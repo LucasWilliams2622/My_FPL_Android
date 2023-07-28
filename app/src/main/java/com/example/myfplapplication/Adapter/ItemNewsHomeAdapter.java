@@ -8,10 +8,12 @@ import android.widget.TextView;
 
 import com.example.myfplapplication.Model.ItemNewsHome;
 import com.example.myfplapplication.R;
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ItemNewsHomeAdapter extends RecyclerView.Adapter<ItemNewsHomeAdapter.ItemViewHolder> {
@@ -31,9 +33,19 @@ public class ItemNewsHomeAdapter extends RecyclerView.Adapter<ItemNewsHomeAdapte
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         ItemNewsHome item = itemList.get(position);
-        holder.itemTitle.setText(item.getTitle());
+        holder.itemTitle.setText(item.getShortTitle());
         holder.itemContent.setText(item.getContent());
-        holder.itemImage.setImageResource(item.getImageResId());
+
+        try {
+            Picasso.get()
+                    .load(item.getImageUrl())
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.ic_launcher_background)
+                    .fit()
+                    .centerInside()
+                    .into(holder.itemImage);
+        } catch (Exception e) {
+        }
     }
 
     @Override

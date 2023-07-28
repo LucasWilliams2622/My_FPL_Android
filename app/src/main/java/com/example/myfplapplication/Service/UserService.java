@@ -22,11 +22,20 @@ public class UserService {
 
     public String getToken() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("USER", Context.MODE_PRIVATE);
-        return "Bearer " + sharedPreferences.getString("token", "");
+        String token = sharedPreferences.getString("token", "");
+        return !token.isEmpty() ? "Bearer " + token : null;
     }
 
     public String getName() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("USER", Context.MODE_PRIVATE);
         return sharedPreferences.getString("name", "");
+    }
+
+    public void clearStorage() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("USER", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("token", null);
+        editor.putString("name", null);
+        editor.apply();
     }
 }

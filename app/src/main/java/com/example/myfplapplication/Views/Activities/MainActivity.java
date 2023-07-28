@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.myfplapplication.R;
+import com.example.myfplapplication.Service.UserService;
 import com.example.myfplapplication.Views.Fragment.HomeFragment;
 import com.example.myfplapplication.Views.Fragment.NotificationFragment;
 import com.example.myfplapplication.Views.Fragment.ProfileFragment;
@@ -43,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
+        UserService userService = new UserService(MainActivity.this);
+
+        if(userService.getToken() == null) {
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
     }
     public void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
