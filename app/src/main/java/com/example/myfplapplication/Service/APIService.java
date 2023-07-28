@@ -3,6 +3,7 @@ package com.example.myfplapplication.Service;
 import com.example.myfplapplication.Model.LichHoc;
 import com.example.myfplapplication.Model.LoginInfo;
 import com.example.myfplapplication.Model.News;
+import com.example.myfplapplication.Model.Notification;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,6 @@ public interface APIService {
     Call<ArrayList<LichHoc>> GetLichHocHomNay(@Header("Authorization") String token);
 
     @GET("news")
-    Call<ArrayList<News>> GetNews(@Header("Authorization") String token);
+    Call<ArrayList<Notification>> GetNews(@Header("Authorization") String token);
 
 }
