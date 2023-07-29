@@ -6,8 +6,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+<<<<<<< Updated upstream:app/src/main/java/com/abc/myfplapplication/Adapter/ItemNewsHomeAdapter.java
 import com.abc.myfplapplication.Model.ItemNewsHome;
 import com.abc.myfplapplication.R;
+=======
+import com.abc.myfplapplication.R;
+import com.example.myfplapplication.Model.ItemNewsHome;
+>>>>>>> Stashed changes:app/src/main/java/com/example/myfplapplication/Adapter/ItemNewsHomeAdapter.java
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
@@ -15,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.IOException;
 import java.util.List;
+
 
 public class ItemNewsHomeAdapter extends RecyclerView.Adapter<ItemNewsHomeAdapter.ItemViewHolder> {
     private List<ItemNewsHome> itemList;

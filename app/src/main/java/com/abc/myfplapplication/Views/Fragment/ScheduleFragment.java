@@ -9,10 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+<<<<<<< Updated upstream:app/src/main/java/com/abc/myfplapplication/Views/Fragment/ScheduleFragment.java
 import com.abc.myfplapplication.Adapter.FragmentScheduleAdapter;
 
 
 import com.abc.myfplapplication.databinding.FragmentScheduleBinding;
+=======
+import com.abc.myfplapplication.databinding.FragmentScheduleBinding;
+import com.example.myfplapplication.Adapter.FragmentScheduleAdapter;
+>>>>>>> Stashed changes:app/src/main/java/com/example/myfplapplication/Views/Fragment/ScheduleFragment.java
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 

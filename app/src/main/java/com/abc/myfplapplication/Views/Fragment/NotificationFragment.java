@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+<<<<<<< Updated upstream:app/src/main/java/com/abc/myfplapplication/Views/Fragment/NotificationFragment.java
 import com.abc.myfplapplication.Adapter.NotificationAdapter;
 import com.abc.myfplapplication.Model.Notification;
 import com.abc.myfplapplication.Model.NotificationGroup;
@@ -30,6 +31,16 @@ import com.abc.myfplapplication.Service.APIService;
 import com.abc.myfplapplication.Service.UserService;
 import com.abc.myfplapplication.Views.Activities.MainActivity;
 import com.abc.myfplapplication.Views.ViewHolder.TabViewHolder;
+=======
+import com.abc.myfplapplication.R;
+import com.example.myfplapplication.Adapter.NotificationAdapter;
+import com.example.myfplapplication.Model.Notification;
+import com.example.myfplapplication.Model.NotificationGroup;
+import com.example.myfplapplication.Service.APIService;
+import com.example.myfplapplication.Service.UserService;
+import com.example.myfplapplication.Views.Activities.MainActivity;
+import com.example.myfplapplication.Views.ViewHolder.TabViewHolder;
+>>>>>>> Stashed changes:app/src/main/java/com/example/myfplapplication/Views/Fragment/NotificationFragment.java
 import com.google.gson.JsonObject;
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -8,9 +8,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+<<<<<<< Updated upstream:app/src/main/java/com/abc/myfplapplication/Adapter/ScheduleExamAdapter.java
 import com.abc.myfplapplication.Model.ScheduleExam;
 import com.abc.myfplapplication.R;
 
+=======
+import com.abc.myfplapplication.R;
+import com.example.myfplapplication.Model.ScheduleExam;
+>>>>>>> Stashed changes:app/src/main/java/com/example/myfplapplication/Adapter/ScheduleExamAdapter.java
 
 import java.util.List;
 

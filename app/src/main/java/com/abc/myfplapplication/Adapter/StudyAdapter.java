@@ -8,10 +8,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+<<<<<<< Updated upstream:app/src/main/java/com/abc/myfplapplication/Adapter/StudyAdapter.java
 import com.abc.myfplapplication.Model.Study;
 import com.abc.myfplapplication.Model.StudyGroup;
 import com.abc.myfplapplication.R;
 
+=======
+import com.abc.myfplapplication.R;
+import com.example.myfplapplication.Model.Study;
+import com.example.myfplapplication.Model.StudyGroup;
+>>>>>>> Stashed changes:app/src/main/java/com/example/myfplapplication/Adapter/StudyAdapter.java
 
 import java.util.List;
 

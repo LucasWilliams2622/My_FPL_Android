@@ -11,9 +11,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.abc.myfplapplication.R;
+<<<<<<< Updated upstream:app/src/main/java/com/abc/myfplapplication/Views/Fragment/ProfileFragment.java
 import com.abc.myfplapplication.Service.UserService;
 import com.abc.myfplapplication.Views.Activities.LoginActivity;
 import com.abc.myfplapplication.Views.Activities.MainActivity;
+=======
+import com.example.myfplapplication.Service.UserService;
+import com.example.myfplapplication.Views.Activities.LoginActivity;
+import com.example.myfplapplication.Views.Activities.MainActivity;
+>>>>>>> Stashed changes:app/src/main/java/com/example/myfplapplication/Views/Fragment/ProfileFragment.java
 
 /**
  * A simple {@link Fragment} subclass.

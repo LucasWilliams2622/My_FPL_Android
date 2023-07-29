@@ -8,12 +8,23 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 
+<<<<<<< Updated upstream:app/src/main/java/com/abc/myfplapplication/Views/Activities/MainActivity.java
 import com.abc.myfplapplication.R;
 import com.abc.myfplapplication.Views.Fragment.HomeFragment;
 import com.abc.myfplapplication.Views.Fragment.NotificationFragment;
 import com.abc.myfplapplication.Views.Fragment.ProfileFragment;
 import com.abc.myfplapplication.Views.Fragment.ScheduleFragment;
 import com.abc.myfplapplication.databinding.ActivityMainBinding;
+=======
+
+import com.abc.myfplapplication.R;
+import com.abc.myfplapplication.databinding.ActivityMainBinding;
+import com.example.myfplapplication.Service.UserService;
+import com.example.myfplapplication.Views.Fragment.HomeFragment;
+import com.example.myfplapplication.Views.Fragment.NotificationFragment;
+import com.example.myfplapplication.Views.Fragment.ProfileFragment;
+import com.example.myfplapplication.Views.Fragment.ScheduleFragment;
+>>>>>>> Stashed changes:app/src/main/java/com/example/myfplapplication/Views/Activities/MainActivity.java
 
 
 public class MainActivity extends AppCompatActivity {

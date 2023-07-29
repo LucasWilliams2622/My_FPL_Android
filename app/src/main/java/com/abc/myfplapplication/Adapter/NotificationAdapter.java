@@ -9,9 +9,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+<<<<<<< Updated upstream:app/src/main/java/com/abc/myfplapplication/Adapter/NotificationAdapter.java
 import com.abc.myfplapplication.Model.Notification;
 import com.abc.myfplapplication.Model.NotificationGroup;
 import com.abc.myfplapplication.R;
+=======
+import com.abc.myfplapplication.R;
+import com.example.myfplapplication.Model.Notification;
+import com.example.myfplapplication.Model.NotificationGroup;
+>>>>>>> Stashed changes:app/src/main/java/com/example/myfplapplication/Adapter/NotificationAdapter.java
 
 
 import java.text.SimpleDateFormat;

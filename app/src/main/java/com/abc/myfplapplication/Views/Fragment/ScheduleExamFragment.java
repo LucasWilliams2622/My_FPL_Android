@@ -10,11 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+<<<<<<< Updated upstream:app/src/main/java/com/abc/myfplapplication/Views/Fragment/ScheduleExamFragment.java
 import com.abc.myfplapplication.Adapter.ExamAdapter;
 import com.abc.myfplapplication.Model.Study;
 import com.abc.myfplapplication.Model.StudyGroup;
 import com.abc.myfplapplication.databinding.FragmentScheduleExamBinding;
 
+=======
+import com.abc.myfplapplication.databinding.FragmentScheduleExamBinding;
+import com.example.myfplapplication.Adapter.ExamAdapter;
+import com.example.myfplapplication.Adapter.StudyAdapter;
+import com.example.myfplapplication.Model.Study;
+import com.example.myfplapplication.Model.StudyGroup;
+>>>>>>> Stashed changes:app/src/main/java/com/example/myfplapplication/Views/Fragment/ScheduleExamFragment.java
 
 import java.util.ArrayList;
 import java.util.Arrays;

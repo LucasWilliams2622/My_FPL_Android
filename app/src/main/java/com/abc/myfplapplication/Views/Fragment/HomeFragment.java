@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< Updated upstream:app/src/main/java/com/abc/myfplapplication/Views/Fragment/HomeFragment.java
 import com.abc.myfplapplication.Adapter.ItemNewsHomeAdapter;
 import com.abc.myfplapplication.Adapter.ScheduleExamAdapter;
 import com.abc.myfplapplication.Adapter.ScheduleStudyAdapter;
@@ -23,6 +24,23 @@ import com.abc.myfplapplication.Model.ScheduleStudy;
 import com.abc.myfplapplication.R;
 import com.abc.myfplapplication.Service.APIService;
 import com.abc.myfplapplication.Service.UserService;
+=======
+import com.abc.myfplapplication.R;
+import com.example.myfplapplication.Adapter.ItemNewsHomeAdapter;
+import com.example.myfplapplication.Adapter.ScheduleExamAdapter;
+import com.example.myfplapplication.Adapter.ScheduleStudyAdapter;
+import com.example.myfplapplication.Model.ItemNewsHome;
+import com.example.myfplapplication.Model.News;
+import com.example.myfplapplication.Model.Notification;
+import com.example.myfplapplication.Model.ScheduleExam;
+import com.example.myfplapplication.Model.LichHoc;
+import com.example.myfplapplication.Model.LoginInfo;
+import com.example.myfplapplication.Model.ScheduleStudy;
+import com.example.myfplapplication.Service.APIService;
+import com.example.myfplapplication.Service.UserService;
+import com.example.myfplapplication.Views.Activities.LoginActivity;
+import com.example.myfplapplication.Views.Activities.MainActivity;
+>>>>>>> Stashed changes:app/src/main/java/com/example/myfplapplication/Views/Fragment/HomeFragment.java
 
 import java.util.ArrayList;
 
