@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "15238740837",
+    "project_id": "fplver2",
+    "storage_bucket": "fplver2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15238740837:android:501e5ae67342ab0245ff8c",
+        "android_client_info": {
+          "package_name": "com.abc.myfplapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15238740837-4bgocmr4r71jsuj7h9mum0evbbr6j8gm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeoJgIgGGPuCs76xwDM327Nlpe_KeolYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15238740837-4bgocmr4r71jsuj7h9mum0evbbr6j8gm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
