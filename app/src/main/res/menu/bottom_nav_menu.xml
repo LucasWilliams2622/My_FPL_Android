@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_calendar"
         android:title="Lịch" />
     <item
-        android:id="@+id/QR"
+        android:id="@+id/chat"
         android:icon="@drawable/ic_qr"
         android:title="Quét mã" />
     <item

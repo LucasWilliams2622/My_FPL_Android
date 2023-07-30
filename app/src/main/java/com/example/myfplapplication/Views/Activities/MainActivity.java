@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import com.example.myfplapplication.R;
 import com.example.myfplapplication.Service.UserService;
+import com.example.myfplapplication.Views.Fragment.ChatFragment;
 import com.example.myfplapplication.Views.Fragment.HomeFragment;
 import com.example.myfplapplication.Views.Fragment.NotificationFragment;
 import com.example.myfplapplication.Views.Fragment.ProfileFragment;
@@ -34,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.profile:
                     replaceFragment(new ProfileFragment());
+                    break;
+                case R.id.chat:
+                    replaceFragment(new ChatFragment());
                     break;
                 case R.id.schedule:
                     replaceFragment(new ScheduleFragment());
