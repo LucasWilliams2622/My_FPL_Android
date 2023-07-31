@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/black"
+    tools:context=".Activity.ChatActivity">
+
+    <View
+        android:id="@+id/viewBackground"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_content_top"
+        app:layout_constraintBottom_toTopOf="@+id/edtMassage" />
+
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/viewSupport"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+
+        android:id="@+id/ivBack"
+        android:layout_width="30dp"
+
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivInfo"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/ic_outline_info_24"
+        android:tint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="aaaaaaaa"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/ivInfo"
+        app:layout_constraintEnd_toStartOf="@+id/ivInfo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivBack"
+        app:layout_constraintTop_toBottomOf="@+id/ivBack"
+        app:layout_constraintVertical_bias="0.571" />
+
+    <View
+        android:id="@+id/viewSupport"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/ivBack"
+        tools:layout_editor_absoluteX="29dp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/chatRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/galzxy2"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        android:padding="20dp"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@+id/viewBackground"
+        app:layout_constraintTop_toBottomOf="@+id/viewSupport"
+        app:stackFromEnd="true" />
+
+    <ProgressBar
+        android:id="@+id/processBar"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/frameLayoutSend"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="6dp"
+
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/background_input"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:src="@drawable/ic_baseline_send_24"
+            android:tint="@color/white" />
+    </FrameLayout>
+
+    <EditText
+
+        android:id="@+id/edtMassage"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/background_chat_input"
+        android:hint="Enter massage"
+        android:imeOptions="actionDone"
+        android:importantForAutofill="no"
+
+        android:inputType="text"
+        android:paddingLeft="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="#B0B3B8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/frameLayoutSend"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAvailability"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#008000"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="Online"
+        android:textColor="@color/white"
+        android:textSize="10dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/viewSupport" />
+</androidx.constraintlayout.widget.ConstraintLayout>

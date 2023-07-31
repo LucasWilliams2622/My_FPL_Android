@@ -15,12 +15,15 @@
         android:theme="@style/Theme.MyFPLApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <service
-            android:name=".Service.NotificationIntentService"
-            android:exported="false"></service>
 
         <activity
             android:name=".Views.Activities.LoginActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Views.Activities.ChatMainScreenActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Views.Activities.ChatActivity"
             android:exported="true"></activity>
         <activity
             android:name=".Views.Activities.MainActivity"
