@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.profile:
                     replaceFragment(new ProfileFragment());
                     break;
+                case R.id.chat:
+                    startActivity(new Intent(getApplicationContext(), ChatMainScreenActivity.class));
+                    break;
                 case R.id.schedule:
                     replaceFragment(new ScheduleFragment());
                     break;
