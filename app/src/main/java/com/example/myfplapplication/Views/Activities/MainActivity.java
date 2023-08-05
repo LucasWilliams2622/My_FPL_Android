@@ -20,10 +20,19 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Integer.parseInt("12398121231") && resultCode == RESULT_OK) {
+            String qrCode = data.getStringExtra("qr_code");
+            // Xử lý mã QR nhận được
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-                binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
 
@@ -36,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new ProfileFragment());
                     break;
                 case R.id.chat:
-                    startActivity(new Intent(getApplicationContext(), ChatMainScreenActivity.class));
+                    Intent intent = new Intent(this, ScannerActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.schedule:
                     replaceFragment(new ScheduleFragment());
@@ -50,12 +60,13 @@ public class MainActivity extends AppCompatActivity {
 
         UserService userService = new UserService(MainActivity.this);
 
-        if(userService.getToken() == null) {
+        if (userService.getToken() == null) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
     }
+
     public void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

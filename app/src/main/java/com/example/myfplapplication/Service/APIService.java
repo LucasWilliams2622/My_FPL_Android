@@ -1,5 +1,6 @@
 package com.example.myfplapplication.Service;
 
+import com.example.myfplapplication.Model.DiemDanh;
 import com.example.myfplapplication.Model.LichHoc;
 import com.example.myfplapplication.Model.LoginInfo;
 import com.example.myfplapplication.Model.News;
@@ -29,6 +30,11 @@ public interface APIService {
     @GET("lichhoc/homnay")
     Call<ArrayList<LichHoc>> GetLichHocHomNay(@Header("Authorization") String token);
 
+    @GET("lichhoc/lichHocTiepTheo")
+    Call<ArrayList<LichHoc>> GetLichHocTiepTheo(@Header("Authorization") String token);
+
+    @POST("diemdanh")
+    Call<DiemDanh> DiemDanh(@Field("id_lich_hoc") Integer id_lich_hoc, @Field("id_user") Integer id_user);
     @GET("news")
     Call<ArrayList<Notification>> GetNews(@Header("Authorization") String token);
 
