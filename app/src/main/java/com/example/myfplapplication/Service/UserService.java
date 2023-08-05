@@ -16,7 +16,11 @@ public class UserService {
         SharedPreferences sharedPreferences = context.getSharedPreferences("USER", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("token", loginInfo.token);
-        editor.putString("name", loginInfo.user.name);
+        editor.putString("id", loginInfo.user.id);
+        editor.putString("phone_number", loginInfo.user.phone_number);
+        editor.putString("email", loginInfo.user.email);
+
+
         editor.apply();
     }
 
@@ -31,6 +35,14 @@ public class UserService {
         return sharedPreferences.getString("name", "");
     }
 
+    public String getId() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("USER", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("id", "");
+    }
+    public String getEmail() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("USER", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("email", "");
+    }
     public void clearStorage() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("USER", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
