@@ -67,6 +67,10 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        TextView tv_name_user = view.findViewById(R.id.tv_name_user_profile);
+
+        UserService userService = new UserService(getContext());
+        tv_name_user.setText(userService.getName());
 
         TextView logoutButton = view.findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(new View.OnClickListener()

@@ -27,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ScannerActivity extends AppCompatActivity {
 
-    Button scan_btn;
+    Button scan_btn, btn_back;
     TextView textView;
 
     @Override
@@ -37,7 +37,14 @@ public class ScannerActivity extends AppCompatActivity {
 
         scan_btn = findViewById(R.id.scanner);
         textView = findViewById(R.id.textScanner);
-
+        btn_back = findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ScannerActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         scan_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,27 +63,37 @@ public class ScannerActivity extends AppCompatActivity {
         if (intentResult != null) {
             String contents = intentResult.getContents();
             if (contents != null) {
+                Log.d("TAGDiemdanh", "Diem danh " + contents);
+                String idLichHoc = contents.substring(contents.lastIndexOf("/") + 1);
+                Log.d("TAGDiemdanh", "Diem danh " + idLichHoc);
+
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(APIService.base_link)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 UserService userService = new UserService(getBaseContext());
                 APIService apiService = retrofit.create(APIService.class);
-                Call<DiemDanh> response = apiService.DiemDanh(Integer.parseInt(contents), Integer.parseInt(userService.getToken()));
+                Log.d("TAGDiemdanh", "Diem danh 1232131" + apiService);
+
+                Call<DiemDanh> response = apiService.DiemDanh(Integer.parseInt(idLichHoc), userService.getToken());
+                Log.d("TAGDiemdanh", "Diem danh " + response);
+
                 Toast.makeText(this, "response", Toast.LENGTH_SHORT).show();
                 response.enqueue(new Callback<DiemDanh>() {
                     @Override
                     public void onResponse(Call<DiemDanh> call, Response<DiemDanh> response) {
-                        Log.d("TAG Diem danh","Diem danh thanh cong");
+                        Log.d("TAGDiemdanh", "Diem danh thanh cong");
                         Toast.makeText(ScannerActivity.this, "Điểm danh thành công", Toast.LENGTH_SHORT).show();
                     }
+
                     @Override
                     public void onFailure(Call<DiemDanh> call, Throwable t) {
-                        Log.d("TAG Diem danh","Diem danh that bai");
+                        Log.d("TAGDiemdanh", "Diem danh that bai");
                         Toast.makeText(getApplicationContext(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                     }
                 });
-            }else {}
+            } else {
+            }
 
         } else {
             super.onActivityResult(requestCode, resultCode, data);

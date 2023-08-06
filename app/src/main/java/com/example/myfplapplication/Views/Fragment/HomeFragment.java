@@ -31,6 +31,7 @@ import com.example.myfplapplication.Views.Activities.LoginActivity;
 import com.example.myfplapplication.Views.Activities.MainActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,17 +41,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment {
     int MAX_SCHEDULE_SIZE = 2;
-
     private RecyclerView recyclerViewNews,recyclerViewScheduleStudy,recyclerViewScheduleExam;
     private ItemNewsHomeAdapter itemNewsHome;
     private ScheduleStudyAdapter scheduleStudyAdapter;
     private  ScheduleExamAdapter scheduleExamAdapter;
+
 
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(APIService.base_link)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
     APIService apiService = retrofit.create(APIService.class);
+    List<Notification> notificationList = new ArrayList<>();
+    RecyclerView notificationRecyclerView;
     public HomeFragment() {
     }
 

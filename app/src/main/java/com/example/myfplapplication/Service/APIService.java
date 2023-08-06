@@ -34,7 +34,7 @@ public interface APIService {
     Call<ArrayList<LichHoc>> GetLichHocTiepTheo(@Header("Authorization") String token);
 
     @POST("diemdanh")
-    Call<DiemDanh> DiemDanh(@Field("id_lich_hoc") Integer id_lich_hoc, @Field("id_user") Integer id_user);
+    Call<DiemDanh> DiemDanh(@Field("id_lich_hoc") Integer id_lich_hoc,@Header("Authorization") String token);
     @GET("news")
     Call<ArrayList<Notification>> GetNews(@Header("Authorization") String token);
 
